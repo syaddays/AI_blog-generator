@@ -2,8 +2,10 @@ services:
   - type: web
     name: ai-blog-generator
     env: python
+    region: oregon
+    plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn assessment:app
+    startCommand: gunicorn assessment:app --bind 0.0.0.0:$PORT
     envVars:
       - key: HUGGINGFACE_API_KEY
         sync: false
