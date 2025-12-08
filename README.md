@@ -1,4 +1,5 @@
 # AI Blog Generator - Implementation Documentation
+live link : https://ai-blog-generator-2-8pxf.onrender.com/
 
 ## Overview
 A premium Flask-based web application that generates ~1000-word blog posts using AI (HuggingFace LLM API). Features a modern, responsive UI with glassmorphism design, real-time validation, and seamless UX.
