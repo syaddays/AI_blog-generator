@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Blog Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <h1>AI Blog Generator</h1>
+            <p>Transform your ideas into fully-fledged, 1000-word blogs with the power of AI. Just enter a topic and let the magic happen.</p>
+        </header>
+
+        <div class="card">
+            <form id="blog-form">
+                <div class="input-group">
+                    <textarea id="prompt" placeholder="Enter your blog topic (e.g., 'The Future of Renewable Energy', 'Digital Marketing Trends in 2025')..." spellcheck="false"></textarea>
+                    <div class="char-counter" id="char-counter">0 / 600 characters</div>
+                    <div id="validation-msg" class="error-msg">⚠ Please enter a prompt between 20 and 600 characters.</div>
+                </div>
+                <button type="submit" id="generate-btn" class="btn-primary">
+                    <div class="spinner"></div>
+                    <span class="btn-text">Generate Blog</span>
+                </button>
+            </form>
+        </div>
+
+        <div id="output-card" class="card">
+            <div class="output-header">
+                <div class="status-chip" id="status-chip">Generated</div>
+                <div class="meta-info">
+                    <span id="word-count">0 words</span>
+                    <button class="action-btn" onclick="copyToClipboard()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        Copy
+                    </button>
+                    <button class="action-btn" onclick="downloadMarkdown()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Download
+                    </button>
+                </div>
+            </div>
+            <div id="blog-content" class="blog-content"></div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
